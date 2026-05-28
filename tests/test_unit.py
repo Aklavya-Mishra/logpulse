@@ -4,7 +4,6 @@ Tests for: anomaly detector, log simulator, LLM enrichment parsing.
 Run with: pytest tests/ -v
 """
 
-import asyncio
 import json
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock

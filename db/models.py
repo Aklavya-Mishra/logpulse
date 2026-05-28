@@ -4,7 +4,7 @@ SQLAlchemy async engine, models, and session management.
 Tables: logs, anomalies
 """
 
-from datetime import datetime, timezone
+from datetime import datetime
 from sqlalchemy import (
     Column, Integer, String, Float, DateTime, Text, Boolean
 )

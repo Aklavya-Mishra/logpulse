@@ -182,7 +182,7 @@ flowchart LR
 | Templating | Jinja2 | BSD |
 | SSE | sse-starlette | BSD |
 | Database | SQLite + SQLAlchemy async | MIT / PSF |
-| Statistical Analysis | NumPy + SciPy | BSD |
+| Statistical Analysis | NumPy | BSD |
 | LLM (primary) | Ollama `llama3.1:8b` | MIT |
 | LLM (fallback) | OpenAI `gpt-4o-mini` | Paid API |
 | HTTP Client | HTTPX | BSD |
