@@ -1,0 +1,29 @@
+services:
+  logpulse:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - LLM_PROVIDER=ollama
+      - OLLAMA_MODEL=llama3.1:8b
+      - LOG_SOURCE=simulator
+      - DATABASE_URL=sqlite+aiosqlite:////app/data/logpulse.db
+      - WEBHOOK_RECEIVER_URL=http://logpulse:8000/webhook/receiver
+    volumes:
+      - logpulse_data:/app/data
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  logpulse_data:
+  ollama_data:

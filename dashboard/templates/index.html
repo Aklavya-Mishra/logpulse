@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ title }}</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+      --critical: #ff7b72;
+      --blue: #58a6ff;
+      --purple: #bc8cff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    header h1 { font-size: 18px; font-weight: 600; color: var(--blue); letter-spacing: 0.5px; }
+    #status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 8px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    #status-label { color: var(--muted); font-size: 13px; }
+
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 20px 24px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .card-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+    .card-value { font-size: 28px; font-weight: 700; }
+    .card-value.green { color: var(--green); }
+    .card-value.yellow { color: var(--yellow); }
+    .card-value.red { color: var(--red); }
+    .card-value.critical { color: var(--critical); }
+    .card-value.blue { color: var(--blue); }
+
+    .charts { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; padding: 0 24px 20px; }
+    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .chart-card h2 { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; }
+    canvas { max-height: 220px; }
+
+    .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 24px 24px; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+    .panel h2 { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
+    .log-feed { height: 260px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 12px; }
+    .log-line { padding: 3px 0; border-bottom: 1px solid #1c2128; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .log-INFO { color: var(--text); }
+    .log-WARN { color: var(--yellow); }
+    .log-ERROR { color: var(--red); }
+    .log-CRITICAL { color: var(--critical); font-weight: 600; }
+
+    .anomaly-feed { height: 260px; overflow-y: auto; }
+    .anomaly-card { background: #1c2128; border-left: 3px solid var(--red); border-radius: 4px; padding: 10px 12px; margin-bottom: 8px; }
+    .anomaly-card.HIGH { border-left-color: var(--red); }
+    .anomaly-card.CRITICAL { border-left-color: var(--critical); }
+    .anomaly-card.MEDIUM { border-left-color: var(--yellow); }
+    .anomaly-card.LOW { border-left-color: var(--green); }
+    .anomaly-service { font-weight: 600; color: var(--blue); font-size: 13px; }
+    .anomaly-severity { font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-left: 8px; }
+    .sev-CRITICAL { background: #3d1a1a; color: var(--critical); }
+    .sev-HIGH { background: #3d1a1a; color: var(--red); }
+    .sev-MEDIUM { background: #3d2a00; color: var(--yellow); }
+    .sev-LOW { background: #1a3d1a; color: var(--green); }
+    .anomaly-meta { color: var(--muted); font-size: 11px; margin-top: 4px; }
+    .anomaly-cause { color: var(--text); font-size: 12px; margin-top: 6px; }
+    .anomaly-action { color: var(--blue); font-size: 11px; margin-top: 4px; font-style: italic; }
+
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ {{ title }}</h1>
+  <div>
+    <span id="status-dot"></span>
+    <span id="status-label">Connecting...</span>
+  </div>
+</header>
+
+<div class="grid">
+  <div class="card"><div class="card-label">Total Logs</div><div class="card-value blue" id="stat-total">0</div></div>
+  <div class="card"><div class="card-label">Errors</div><div class="card-value red" id="stat-errors">0</div></div>
+  <div class="card"><div class="card-label">Warnings</div><div class="card-value yellow" id="stat-warns">0</div></div>
+  <div class="card"><div class="card-label">Anomalies Detected</div><div class="card-value critical" id="stat-anomalies">0</div></div>
+</div>
+
+<div class="charts">
+  <div class="chart-card">
+    <h2>Error Rate — Live Trend</h2>
+    <canvas id="errorRateChart"></canvas>
+  </div>
+  <div class="chart-card">
+    <h2>Log Level Distribution</h2>
+    <canvas id="levelChart"></canvas>
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="panel">
+    <h2>Live Log Feed</h2>
+    <div class="log-feed" id="log-feed"></div>
+  </div>
+  <div class="panel">
+    <h2>Anomaly Feed</h2>
+    <div class="anomaly-feed" id="anomaly-feed"></div>
+  </div>
+</div>
+
+<script>
+  // ── Charts Setup ──────────────────────────────────────────────
+  const errorCtx = document.getElementById('errorRateChart').getContext('2d');
+  const errorChart = new Chart(errorCtx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Error Rate',
+        data: [],
+        borderColor: '#f85149',
+        backgroundColor: 'rgba(248,81,73,0.08)',
+        borderWidth: 2,
+        tension: 0.4,
+        fill: true,
+        pointRadius: 0,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      animation: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: '#8b949e', maxTicksLimit: 8 }, grid: { color: '#21262d' } },
+        y: { ticks: { color: '#8b949e', callback: v => (v*100).toFixed(0)+'%' }, grid: { color: '#21262d' }, min: 0, max: 1 }
+      }
+    }
+  });
+
+  const levelCtx = document.getElementById('levelChart').getContext('2d');
+  const levelChart = new Chart(levelCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['INFO', 'WARN', 'ERROR', 'CRITICAL'],
+      datasets: [{
+        data: [0, 0, 0, 0],
+        backgroundColor: ['#3fb950', '#d29922', '#f85149', '#ff7b72'],
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#8b949e', font: { size: 12 } } } }
+    }
+  });
+
+  // ── State ─────────────────────────────────────────────────────
+  let stats = { total: 0, INFO: 0, WARN: 0, ERROR: 0, CRITICAL: 0, anomalies: 0 };
+  const MAX_LOG_LINES = 200;
+  const MAX_CHART_POINTS = 60;
+  let logLines = [];
+
+  // ── SSE Connection ────────────────────────────────────────────
+  function connect() {
+    const es = new EventSource('/stream');
+
+    es.addEventListener('log', e => {
+      const log = JSON.parse(e.data);
+      appendLog(log);
+      updateStats(log.level);
+    });
+
+    es.addEventListener('anomaly', e => {
+      const anomaly = JSON.parse(e.data);
+      appendAnomaly(anomaly);
+      stats.anomalies++;
+      document.getElementById('stat-anomalies').textContent = stats.anomalies;
+    });
+
+    es.addEventListener('timeseries', e => {
+      const points = JSON.parse(e.data);
+      updateErrorChart(points);
+    });
+
+    es.onopen = () => {
+      document.getElementById('status-dot').style.background = '#3fb950';
+      document.getElementById('status-label').textContent = 'Live — ingesting logs';
+    };
+
+    es.onerror = () => {
+      document.getElementById('status-dot').style.background = '#f85149';
+      document.getElementById('status-label').textContent = 'Reconnecting...';
+      es.close();
+      setTimeout(connect, 3000);
+    };
+  }
+
+  // ── Log Feed ──────────────────────────────────────────────────
+  function appendLog(log) {
+    const feed = document.getElementById('log-feed');
+    const line = document.createElement('div');
+    line.className = `log-line log-${log.level}`;
+    const ts = new Date(log.timestamp).toLocaleTimeString();
+    line.textContent = `${ts} [${log.level}] ${log.service} — ${log.message}`;
+    feed.prepend(line);
+    logLines.push(line);
+    if (logLines.length > MAX_LOG_LINES) {
+      const old = logLines.shift();
+      old.remove();
+    }
+  }
+
+  // ── Stats ─────────────────────────────────────────────────────
+  function updateStats(level) {
+    stats.total++;
+    stats[level] = (stats[level] || 0) + 1;
+    document.getElementById('stat-total').textContent = stats.total;
+    document.getElementById('stat-errors').textContent = (stats.ERROR || 0) + (stats.CRITICAL || 0);
+    document.getElementById('stat-warns').textContent = stats.WARN || 0;
+    levelChart.data.datasets[0].data = [stats.INFO||0, stats.WARN||0, stats.ERROR||0, stats.CRITICAL||0];
+    levelChart.update('none');
+  }
+
+  // ── Error Rate Chart ──────────────────────────────────────────
+  function updateErrorChart(points) {
+    errorChart.data.labels = points.map(p => p.time);
+    errorChart.data.datasets[0].data = points.map(p => p.error_rate);
+    errorChart.update('none');
+  }
+
+  // ── Anomaly Feed ──────────────────────────────────────────────
+  function appendAnomaly(a) {
+    const feed = document.getElementById('anomaly-feed');
+    const card = document.createElement('div');
+    const sev = a.analysis?.severity || 'MEDIUM';
+    card.className = `anomaly-card ${sev}`;
+    const ts = new Date(a.timestamp).toLocaleTimeString();
+    card.innerHTML = `
+      <div>
+        <span class="anomaly-service">${a.service}</span>
+        <span class="anomaly-severity sev-${sev}">${sev}</span>
+      </div>
+      <div class="anomaly-meta">${ts} · Error rate: ${(a.metrics?.error_rate * 100).toFixed(1)}% · Z-score: ${a.metrics?.zscore?.toFixed(2)}</div>
+      <div class="anomaly-cause">${a.analysis?.root_cause || ''}</div>
+      <div class="anomaly-action">→ ${a.analysis?.suggested_action || ''}</div>
+    `;
+    feed.prepend(card);
+  }
+
+  connect();
+</script>
+</body>
+</html>

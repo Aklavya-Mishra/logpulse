@@ -1,0 +1,101 @@
+timestamp,level,service,message,raw
+2026-05-29T10:00:00Z,INFO,auth-service,Request processed successfully,2026-05-29T10:00:00Z [INFO] auth-service - Request processed successfully
+2026-05-29T10:00:05Z,INFO,payment-service,Database query completed in 42ms,2026-05-29T10:00:05Z [INFO] payment-service - Database query completed in 42ms
+2026-05-29T10:00:10Z,INFO,user-service,User profile loaded,2026-05-29T10:00:10Z [INFO] user-service - User profile loaded
+2026-05-29T10:00:15Z,WARN,notification-service,Retry attempt 1 for downstream call,2026-05-29T10:00:15Z [WARN] notification-service - Retry attempt 1 for downstream call
+2026-05-29T10:00:20Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:00:20Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:00:25Z,INFO,auth-service,Token validated for user user_1042,2026-05-29T10:00:25Z [INFO] auth-service - Token validated for user user_1042
+2026-05-29T10:00:30Z,INFO,payment-service,Cache hit for key invoice_8841,2026-05-29T10:00:30Z [INFO] payment-service - Cache hit for key invoice_8841
+2026-05-29T10:00:35Z,WARN,user-service,Response time degraded: 780ms,2026-05-29T10:00:35Z [WARN] user-service - Response time degraded: 780ms
+2026-05-29T10:00:40Z,INFO,notification-service,Queue depth: 12 messages,2026-05-29T10:00:40Z [INFO] notification-service - Queue depth: 12 messages
+2026-05-29T10:00:45Z,INFO,api-gateway,Health check passed,2026-05-29T10:00:45Z [INFO] api-gateway - Health check passed
+2026-05-29T10:00:50Z,INFO,auth-service,User session created,2026-05-29T10:00:50Z [INFO] auth-service - User session created
+2026-05-29T10:00:55Z,INFO,payment-service,Payment authorization completed,2026-05-29T10:00:55Z [INFO] payment-service - Payment authorization completed
+2026-05-29T10:01:00Z,INFO,user-service,Config reloaded,2026-05-29T10:01:00Z [INFO] user-service - Config reloaded
+2026-05-29T10:01:05Z,WARN,notification-service,Queue depth elevated: 63 messages,2026-05-29T10:01:05Z [WARN] notification-service - Queue depth elevated: 63 messages
+2026-05-29T10:01:10Z,INFO,api-gateway,Request routed to upstream service,2026-05-29T10:01:10Z [INFO] api-gateway - Request routed to upstream service
+2026-05-29T10:01:15Z,INFO,auth-service,Request processed successfully,2026-05-29T10:01:15Z [INFO] auth-service - Request processed successfully
+2026-05-29T10:01:20Z,INFO,payment-service,Database query completed in 51ms,2026-05-29T10:01:20Z [INFO] payment-service - Database query completed in 51ms
+2026-05-29T10:01:25Z,INFO,user-service,Cache hit for key profile_4432,2026-05-29T10:01:25Z [INFO] user-service - Cache hit for key profile_4432
+2026-05-29T10:01:30Z,WARN,notification-service,Retry attempt 2 for downstream call,2026-05-29T10:01:30Z [WARN] notification-service - Retry attempt 2 for downstream call
+2026-05-29T10:01:35Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:01:35Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:01:40Z,INFO,auth-service,Token validated for user user_1188,2026-05-29T10:01:40Z [INFO] auth-service - Token validated for user user_1188
+2026-05-29T10:01:45Z,INFO,payment-service,Payment capture completed,2026-05-29T10:01:45Z [INFO] payment-service - Payment capture completed
+2026-05-29T10:01:50Z,INFO,user-service,Database query completed in 37ms,2026-05-29T10:01:50Z [INFO] user-service - Database query completed in 37ms
+2026-05-29T10:01:55Z,WARN,notification-service,Memory usage at 72%,2026-05-29T10:01:55Z [WARN] notification-service - Memory usage at 72%
+2026-05-29T10:02:00Z,INFO,api-gateway,Health check passed,2026-05-29T10:02:00Z [INFO] api-gateway - Health check passed
+2026-05-29T10:02:05Z,INFO,auth-service,User session created,2026-05-29T10:02:05Z [INFO] auth-service - User session created
+2026-05-29T10:02:10Z,INFO,payment-service,Cache hit for key payment_2121,2026-05-29T10:02:10Z [INFO] payment-service - Cache hit for key payment_2121
+2026-05-29T10:02:15Z,INFO,user-service,Request processed successfully,2026-05-29T10:02:15Z [INFO] user-service - Request processed successfully
+2026-05-29T10:02:20Z,WARN,notification-service,Deprecated endpoint called,2026-05-29T10:02:20Z [WARN] notification-service - Deprecated endpoint called
+2026-05-29T10:02:25Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:02:25Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:02:30Z,INFO,auth-service,Token validated for user user_2445,2026-05-29T10:02:30Z [INFO] auth-service - Token validated for user user_2445
+2026-05-29T10:02:35Z,INFO,payment-service,Database query completed in 46ms,2026-05-29T10:02:35Z [INFO] payment-service - Database query completed in 46ms
+2026-05-29T10:02:40Z,INFO,user-service,Config reloaded,2026-05-29T10:02:40Z [INFO] user-service - Config reloaded
+2026-05-29T10:02:45Z,WARN,notification-service,Rate limit approaching for client 10.0.2.44,2026-05-29T10:02:45Z [WARN] notification-service - Rate limit approaching for client 10.0.2.44
+2026-05-29T10:02:50Z,INFO,api-gateway,Request routed to upstream service,2026-05-29T10:02:50Z [INFO] api-gateway - Request routed to upstream service
+2026-05-29T10:02:55Z,INFO,auth-service,Request processed successfully,2026-05-29T10:02:55Z [INFO] auth-service - Request processed successfully
+2026-05-29T10:03:00Z,INFO,payment-service,Payment authorization completed,2026-05-29T10:03:00Z [INFO] payment-service - Payment authorization completed
+2026-05-29T10:03:05Z,INFO,user-service,User profile loaded,2026-05-29T10:03:05Z [INFO] user-service - User profile loaded
+2026-05-29T10:03:10Z,WARN,notification-service,Queue depth elevated: 71 messages,2026-05-29T10:03:10Z [WARN] notification-service - Queue depth elevated: 71 messages
+2026-05-29T10:03:15Z,INFO,api-gateway,Health check passed,2026-05-29T10:03:15Z [INFO] api-gateway - Health check passed
+2026-05-29T10:03:20Z,INFO,auth-service,User session created,2026-05-29T10:03:20Z [INFO] auth-service - User session created
+2026-05-29T10:03:25Z,INFO,payment-service,Database query completed in 39ms,2026-05-29T10:03:25Z [INFO] payment-service - Database query completed in 39ms
+2026-05-29T10:03:30Z,INFO,user-service,Cache hit for key profile_9001,2026-05-29T10:03:30Z [INFO] user-service - Cache hit for key profile_9001
+2026-05-29T10:03:35Z,WARN,notification-service,Retry attempt 1 for downstream call,2026-05-29T10:03:35Z [WARN] notification-service - Retry attempt 1 for downstream call
+2026-05-29T10:03:40Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:03:40Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:03:45Z,INFO,auth-service,Token validated for user user_3881,2026-05-29T10:03:45Z [INFO] auth-service - Token validated for user user_3881
+2026-05-29T10:03:50Z,INFO,payment-service,Payment capture completed,2026-05-29T10:03:50Z [INFO] payment-service - Payment capture completed
+2026-05-29T10:03:55Z,INFO,user-service,Database query completed in 45ms,2026-05-29T10:03:55Z [INFO] user-service - Database query completed in 45ms
+2026-05-29T10:04:00Z,WARN,notification-service,Memory usage at 76%,2026-05-29T10:04:00Z [WARN] notification-service - Memory usage at 76%
+2026-05-29T10:04:05Z,INFO,api-gateway,Health check passed,2026-05-29T10:04:05Z [INFO] api-gateway - Health check passed
+2026-05-29T10:04:10Z,ERROR,payment-service,Database connection timeout after 2500ms,2026-05-29T10:04:10Z [ERROR] payment-service - Database connection timeout after 2500ms
+2026-05-29T10:04:15Z,ERROR,payment-service,Upstream service unavailable: card-network,2026-05-29T10:04:15Z [ERROR] payment-service - Upstream service unavailable: card-network
+2026-05-29T10:04:20Z,ERROR,payment-service,Payment processing failed: gateway error,2026-05-29T10:04:20Z [ERROR] payment-service - Payment processing failed: gateway error
+2026-05-29T10:04:25Z,CRITICAL,payment-service,Circuit breaker OPEN for card-network,2026-05-29T10:04:25Z [CRITICAL] payment-service - Circuit breaker OPEN for card-network
+2026-05-29T10:04:30Z,ERROR,payment-service,HTTP 500 returned to client 10.2.1.77,2026-05-29T10:04:30Z [ERROR] payment-service - HTTP 500 returned to client 10.2.1.77
+2026-05-29T10:04:35Z,ERROR,payment-service,Database connection timeout after 2800ms,2026-05-29T10:04:35Z [ERROR] payment-service - Database connection timeout after 2800ms
+2026-05-29T10:04:40Z,ERROR,payment-service,Payment processing failed: gateway error,2026-05-29T10:04:40Z [ERROR] payment-service - Payment processing failed: gateway error
+2026-05-29T10:04:45Z,CRITICAL,payment-service,Cascading failure detected across 3 services,2026-05-29T10:04:45Z [CRITICAL] payment-service - Cascading failure detected across 3 services
+2026-05-29T10:04:50Z,ERROR,payment-service,Redis connection refused,2026-05-29T10:04:50Z [ERROR] payment-service - Redis connection refused
+2026-05-29T10:04:55Z,ERROR,payment-service,Unhandled exception in request handler,2026-05-29T10:04:55Z [ERROR] payment-service - Unhandled exception in request handler
+2026-05-29T10:05:00Z,CRITICAL,payment-service,FATAL: Database cluster unreachable,2026-05-29T10:05:00Z [CRITICAL] payment-service - FATAL: Database cluster unreachable
+2026-05-29T10:05:05Z,ERROR,payment-service,Database connection timeout after 3000ms,2026-05-29T10:05:05Z [ERROR] payment-service - Database connection timeout after 3000ms
+2026-05-29T10:05:10Z,ERROR,payment-service,Payment processing failed: gateway error,2026-05-29T10:05:10Z [ERROR] payment-service - Payment processing failed: gateway error
+2026-05-29T10:05:15Z,CRITICAL,payment-service,Circuit breaker OPEN for card-network,2026-05-29T10:05:15Z [CRITICAL] payment-service - Circuit breaker OPEN for card-network
+2026-05-29T10:05:20Z,ERROR,payment-service,HTTP 500 returned to client 10.2.1.80,2026-05-29T10:05:20Z [ERROR] payment-service - HTTP 500 returned to client 10.2.1.80
+2026-05-29T10:05:25Z,ERROR,payment-service,Upstream service unavailable: card-network,2026-05-29T10:05:25Z [ERROR] payment-service - Upstream service unavailable: card-network
+2026-05-29T10:05:30Z,ERROR,payment-service,Redis connection refused,2026-05-29T10:05:30Z [ERROR] payment-service - Redis connection refused
+2026-05-29T10:05:35Z,CRITICAL,payment-service,Cascading failure detected across 4 services,2026-05-29T10:05:35Z [CRITICAL] payment-service - Cascading failure detected across 4 services
+2026-05-29T10:05:40Z,ERROR,payment-service,Unhandled exception in request handler,2026-05-29T10:05:40Z [ERROR] payment-service - Unhandled exception in request handler
+2026-05-29T10:05:45Z,ERROR,payment-service,Payment processing failed: gateway error,2026-05-29T10:05:45Z [ERROR] payment-service - Payment processing failed: gateway error
+2026-05-29T10:05:50Z,INFO,auth-service,Request processed successfully,2026-05-29T10:05:50Z [INFO] auth-service - Request processed successfully
+2026-05-29T10:05:55Z,INFO,user-service,User profile loaded,2026-05-29T10:05:55Z [INFO] user-service - User profile loaded
+2026-05-29T10:06:00Z,WARN,notification-service,Queue depth elevated: 82 messages,2026-05-29T10:06:00Z [WARN] notification-service - Queue depth elevated: 82 messages
+2026-05-29T10:06:05Z,INFO,api-gateway,Health check passed,2026-05-29T10:06:05Z [INFO] api-gateway - Health check passed
+2026-05-29T10:06:10Z,INFO,auth-service,Token validated for user user_5100,2026-05-29T10:06:10Z [INFO] auth-service - Token validated for user user_5100
+2026-05-29T10:06:15Z,INFO,payment-service,Payment capture completed,2026-05-29T10:06:15Z [INFO] payment-service - Payment capture completed
+2026-05-29T10:06:20Z,INFO,user-service,Database query completed in 43ms,2026-05-29T10:06:20Z [INFO] user-service - Database query completed in 43ms
+2026-05-29T10:06:25Z,WARN,notification-service,Retry attempt 1 for downstream call,2026-05-29T10:06:25Z [WARN] notification-service - Retry attempt 1 for downstream call
+2026-05-29T10:06:30Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:06:30Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:06:35Z,INFO,auth-service,User session created,2026-05-29T10:06:35Z [INFO] auth-service - User session created
+2026-05-29T10:06:40Z,INFO,payment-service,Database query completed in 49ms,2026-05-29T10:06:40Z [INFO] payment-service - Database query completed in 49ms
+2026-05-29T10:06:45Z,INFO,user-service,Config reloaded,2026-05-29T10:06:45Z [INFO] user-service - Config reloaded
+2026-05-29T10:06:50Z,WARN,notification-service,Memory usage at 74%,2026-05-29T10:06:50Z [WARN] notification-service - Memory usage at 74%
+2026-05-29T10:06:55Z,INFO,api-gateway,Health check passed,2026-05-29T10:06:55Z [INFO] api-gateway - Health check passed
+2026-05-29T10:07:00Z,INFO,auth-service,Token validated for user user_5222,2026-05-29T10:07:00Z [INFO] auth-service - Token validated for user user_5222
+2026-05-29T10:07:05Z,INFO,payment-service,Payment authorization completed,2026-05-29T10:07:05Z [INFO] payment-service - Payment authorization completed
+2026-05-29T10:07:10Z,INFO,user-service,Cache hit for key profile_7710,2026-05-29T10:07:10Z [INFO] user-service - Cache hit for key profile_7710
+2026-05-29T10:07:15Z,WARN,notification-service,Queue depth elevated: 45 messages,2026-05-29T10:07:15Z [WARN] notification-service - Queue depth elevated: 45 messages
+2026-05-29T10:07:20Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:07:20Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:07:25Z,INFO,auth-service,Request processed successfully,2026-05-29T10:07:25Z [INFO] auth-service - Request processed successfully
+2026-05-29T10:07:30Z,INFO,payment-service,Database query completed in 41ms,2026-05-29T10:07:30Z [INFO] payment-service - Database query completed in 41ms
+2026-05-29T10:07:35Z,INFO,user-service,User profile loaded,2026-05-29T10:07:35Z [INFO] user-service - User profile loaded
+2026-05-29T10:07:40Z,WARN,notification-service,Retry attempt 2 for downstream call,2026-05-29T10:07:40Z [WARN] notification-service - Retry attempt 2 for downstream call
+2026-05-29T10:07:45Z,INFO,api-gateway,Health check passed,2026-05-29T10:07:45Z [INFO] api-gateway - Health check passed
+2026-05-29T10:07:50Z,INFO,auth-service,User session created,2026-05-29T10:07:50Z [INFO] auth-service - User session created
+2026-05-29T10:07:55Z,INFO,payment-service,Payment capture completed,2026-05-29T10:07:55Z [INFO] payment-service - Payment capture completed
+2026-05-29T10:08:00Z,INFO,user-service,Database query completed in 44ms,2026-05-29T10:08:00Z [INFO] user-service - Database query completed in 44ms
+2026-05-29T10:08:05Z,WARN,notification-service,Memory usage at 73%,2026-05-29T10:08:05Z [WARN] notification-service - Memory usage at 73%
+2026-05-29T10:08:10Z,INFO,api-gateway,Response sent with status 200,2026-05-29T10:08:10Z [INFO] api-gateway - Response sent with status 200
+2026-05-29T10:08:15Z,INFO,auth-service,Token validated for user user_6102,2026-05-29T10:08:15Z [INFO] auth-service - Token validated for user user_6102
